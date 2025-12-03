@@ -1,0 +1,1 @@
+export const DEFAULT_GAS_INSTRUCTION_MSG_VALUE = 0n;

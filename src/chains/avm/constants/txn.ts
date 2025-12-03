@@ -1,0 +1,1 @@
+export const DEFAULT_VALIDITY_WINDOW = 1000;
