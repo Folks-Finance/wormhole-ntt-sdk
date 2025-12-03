@@ -6,10 +6,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Folks-Finance/wormhole-ntt-sdk.git"
-  },
+  "repository": "Folks-Finance/wormhole-ntt-sdk",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
