@@ -3,6 +3,9 @@
   "version": "0.0.2",
   "description": "JavaScript SDK for Wormhole NTT Bridge",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Folks-Finance/wormhole-ntt-sdk.git"
