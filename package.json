@@ -11,13 +11,18 @@
     "url": "https://github.com/Folks-Finance/wormhole-ntt-sdk.git"
   },
   "type": "module",
+  "files": [
+    "dist",
+    "src"
+  ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "scripts": {
     "prepare": "husky",
