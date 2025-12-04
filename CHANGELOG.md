@@ -1,5 +1,12 @@
 # @folks-finance/wormhole-ntt-sdk
 
+## 0.0.4
+
+### Patch Changes
+
+- 75d6fdd: docs anchor links
+- 8f28093: setup exports
+
 ## 0.0.3
 
 ### Patch Changes
