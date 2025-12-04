@@ -14,11 +14,8 @@ JavaScript SDK for transferring Wormhole NTT tokens with support for Algorand.
     - [Package manager](#package-manager)
   - [SDK Structure and Usage](#sdk-structure-and-usage)
     - [FolksCore](#folkscore)
-    - [Modules](#modules)
+    - [FolksBridge](#folksbridge)
   - [Basic Usage](#basic-usage)
-  - [React Usage](#react-usage)
-    - [Initializing FolksCore](#initializing-folkscore)
-    - [Synchronizing FolksCore Signer](#synchronizing-folkscore-signer)
 
 ## Getting Started
 
