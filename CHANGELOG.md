@@ -1,5 +1,11 @@
 # @folks-finance/wormhole-ntt-sdk
 
+## 0.0.5
+
+### Patch Changes
+
+- f4024a5: remove support for monad testnet
+
 ## 0.0.4
 
 ### Patch Changes
