@@ -10,7 +10,6 @@ import {
   bscTestnet,
   mainnet,
   monad,
-  monadTestnet,
   polygon,
   polygonAmoy,
   sei,
@@ -46,7 +45,6 @@ export const TESTNET_EVM_CHAIN_ID = {
   BSC_TESTNET: bscTestnet.id,
   POLYGON_AMOY: polygonAmoy.id,
   SEI_EVM_TESTNET: seiTestnet.id,
-  MONAD_TESTNET: monadTestnet.id,
 } as const satisfies Record<keyof typeof TESTNET_EVM_FOLKS_CHAIN_ID, number>;
 
 export const EVM_CHAIN_ID = {
@@ -73,7 +71,6 @@ export const TESTNET_EVM_FOLKS_CHAIN_ID = {
   BSC_TESTNET: "BSC_TESTNET",
   POLYGON_AMOY: "POLYGON_AMOY",
   SEI_EVM_TESTNET: "SEI_EVM_TESTNET",
-  MONAD_TESTNET: "MONAD_TESTNET",
 } as const;
 
 export const EVM_FOLKS_CHAIN_ID = {
@@ -105,7 +102,6 @@ export const TESTNET_CHAIN_VIEM = {
   [EVM_FOLKS_CHAIN_ID.BSC_TESTNET]: bscTestnet,
   [EVM_FOLKS_CHAIN_ID.POLYGON_AMOY]: polygonAmoy,
   [EVM_FOLKS_CHAIN_ID.SEI_EVM_TESTNET]: seiTestnet,
-  [EVM_FOLKS_CHAIN_ID.MONAD_TESTNET]: monadTestnet,
 } as const;
 
 export const CHAIN_VIEM = {
@@ -132,7 +128,6 @@ export const TESTNET_CHAIN_NODE = {
   [EVM_FOLKS_CHAIN_ID.BSC_TESTNET]: [...bscTestnet.rpcUrls.default.http],
   [EVM_FOLKS_CHAIN_ID.POLYGON_AMOY]: [...polygonAmoy.rpcUrls.default.http],
   [EVM_FOLKS_CHAIN_ID.SEI_EVM_TESTNET]: [...seiTestnet.rpcUrls.default.http],
-  [EVM_FOLKS_CHAIN_ID.MONAD_TESTNET]: [...monadTestnet.rpcUrls.default.http],
 };
 
 export const CHAIN_NODE = {
@@ -159,7 +154,6 @@ export const TESTNET_EVM_WORMHOLE_CHAIN_ID = {
   [EVM_FOLKS_CHAIN_ID.BSC_TESTNET]: chainToChainId("Bsc"),
   [EVM_FOLKS_CHAIN_ID.POLYGON_AMOY]: chainToChainId("PolygonSepolia"),
   [EVM_FOLKS_CHAIN_ID.SEI_EVM_TESTNET]: chainToChainId("Seievm"),
-  [EVM_FOLKS_CHAIN_ID.MONAD_TESTNET]: chainToChainId("Monad"),
 };
 
 export const EVM_WORMHOLE_CHAIN_ID = {
@@ -334,17 +328,6 @@ export const TESTNET_EVM_FOLKS_CHAIN: Record<TestnetEVMFolksChainId, NTTChain<EV
     nttExecutors: {
       [ExecutorFeeType.NATIVE]: "0x3F2D6441C7a59Dfe80f8e14142F9E28F6D440445" as EVMAddress,
       [ExecutorFeeType.TOKEN]: "0x248ae411586401BECC3Be792bd893fF5AEA3c8E5" as EVMAddress,
-    },
-  },
-  [EVM_FOLKS_CHAIN_ID.MONAD_TESTNET]: {
-    chainType: ChainType.EVM,
-    wormholeChainId: EVM_WORMHOLE_CHAIN_ID.MONAD_TESTNET,
-    folksChainId: EVM_FOLKS_CHAIN_ID.MONAD_TESTNET,
-    chainName: "MONAD_TESTNET",
-    network: NetworkType.TESTNET,
-    nttExecutors: {
-      [ExecutorFeeType.NATIVE]: "0x93FE94Ad887a1B04DBFf1f736bfcD1698D4cfF66" as EVMAddress,
-      [ExecutorFeeType.TOKEN]: "0x21c9e0119d891E075C702f61E9DDa4b73320F99F" as EVMAddress,
     },
   },
 };
