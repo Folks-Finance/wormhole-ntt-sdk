@@ -1,5 +1,11 @@
 # @folks-finance/wormhole-ntt-sdk
 
+## 0.0.6
+
+### Patch Changes
+
+- 230fafc: add folks on monad to default ntt tokens
+
 ## 0.0.5
 
 ### Patch Changes
