@@ -1,5 +1,11 @@
 # @folks-finance/wormhole-ntt-sdk
 
+## 0.0.7
+
+### Patch Changes
+
+- 098ee65: cjs support
+
 ## 0.0.6
 
 ### Patch Changes
