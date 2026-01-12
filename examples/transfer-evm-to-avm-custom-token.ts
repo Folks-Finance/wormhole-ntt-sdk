@@ -10,7 +10,7 @@ import {
   TokenType,
 } from "../src/index.js";
 
-import { CUSTOM_NTT_TOKEN_TESTNET, CUSTOM_NTT_TOKEN_TESTNET_ID } from "./constants.js";
+import { CUSTOM_NTT_TOKENS_TESTNET, CUSTOM_NTT_TOKEN_TESTNET_ID } from "./constants.js";
 import { getEVMSigner } from "./utils.js";
 
 import type { AVMAddress, FolksCoreConfig } from "../src/index.js";
@@ -34,7 +34,7 @@ async function main() {
     chainType: ChainType.EVM,
   });
 
-  FolksCore.addTokens(CUSTOM_NTT_TOKEN_TESTNET);
+  FolksCore.addTokens(CUSTOM_NTT_TOKENS_TESTNET);
 
   const capabilities = await FolksBridge.read.capabilities();
   const feePaymentToken = capabilities[folksChainId]?.feePaymentTokens.find(
