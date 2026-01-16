@@ -1,5 +1,11 @@
 # @folks-finance/wormhole-ntt-sdk
 
+## 0.1.0
+
+### Minor Changes
+
+- 308c7b0: refactor ntt operation to include source and destination amounts
+
 ## 0.0.7
 
 ### Patch Changes
