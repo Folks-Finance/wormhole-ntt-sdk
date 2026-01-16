@@ -28,8 +28,14 @@ import {
   isWormholeChainSupported,
 } from "../../common/utils/chain.js";
 import { exhaustiveCheck } from "../../common/utils/exhaustive-check.js";
+import { createDecimalAmount } from "../../common/utils/formulae.js";
 import { isDefined } from "../../common/utils/is-defined.js";
-import { getNttTokenFromAddress, isAddressAnNttToken, isNttTokenSupported } from "../../common/utils/token.js";
+import {
+  getNttChainToken,
+  getNttTokenFromAddress,
+  isAddressAnNttToken,
+  isNttTokenSupported,
+} from "../../common/utils/token.js";
 import { FolksCore } from "../core/folks-core.js";
 
 import type { AVMAddress, AVMAsaId, EVMAddress, GenericAddress } from "../../common/types/address.js";
@@ -209,7 +215,11 @@ export const read = {
           sourceFolksChain.chainType === ChainType.EVM ? (tokenAddress as EVMAddress) : (tokenAddress as AVMAddress),
           sourceFolksChain.chainType,
         );
-        const { nttTokenId } = getNttTokenFromAddress(sourceFolksChain.folksChainId, nttTokenAddress);
+        const { nttTokenId, decimals: sourceDecimals } = getNttTokenFromAddress(
+          sourceFolksChain.folksChainId,
+          nttTokenAddress,
+        );
+        const { decimals: destDecimals } = getNttChainToken(nttTokenId, destFolksChain.folksChainId);
 
         // if destination transaction is present then transfer has completed
         // else if vaa is present then it has been signed by guardians but not yet relayed
@@ -234,6 +244,7 @@ export const read = {
               sourceFolksChain.chainType === ChainType.EVM ? (fromAddress as EVMAddress) : (fromAddress as AVMAddress),
               sourceFolksChain.chainType,
             ),
+            amount: createDecimalAmount(amount, sourceDecimals),
             transaction: {
               txHash: sourceChain.transaction.txHash,
               timestamp: sourceChain.timestamp,
@@ -246,6 +257,7 @@ export const read = {
               destFolksChain.chainType === ChainType.EVM ? (toAddress as EVMAddress) : (toAddress as AVMAddress),
               destFolksChain.chainType,
             ),
+            amount: createDecimalAmount(amount, destDecimals),
             transaction: targetChain
               ? {
                   txHash: targetChain.transaction.txHash,
@@ -253,7 +265,6 @@ export const read = {
                 }
               : undefined,
           },
-          amount: (amount * 10n ** BigInt(normalizedDecimals)) / 10n ** 8n,
           vaaRaw: vaa?.raw,
         };
       });

@@ -112,6 +112,7 @@ export type NTTOperation = {
   sourceChain: {
     folksChainId: FolksChainId;
     fromAddress: GenericAddress;
+    amount: bigint;
     transaction: {
       txHash: string;
       timestamp: string;
@@ -120,12 +121,12 @@ export type NTTOperation = {
   destinationChain: {
     folksChainId: FolksChainId;
     toAddress: GenericAddress;
+    amount: bigint;
     transaction?: {
       txHash: string;
       timestamp: string;
     };
   };
-  amount: bigint;
   vaaRaw?: Hex;
 };
 

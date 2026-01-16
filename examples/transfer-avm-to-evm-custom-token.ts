@@ -8,7 +8,7 @@ import {
   TokenType,
 } from "../src/index.js";
 
-import { CUSTOM_NTT_TOKEN_TESTNET, CUSTOM_NTT_TOKEN_TESTNET_ID } from "./constants.js";
+import { CUSTOM_NTT_TOKENS_TESTNET, CUSTOM_NTT_TOKEN_TESTNET_ID } from "./constants.js";
 import { getAVMSigner } from "./utils.js";
 
 import type { EVMAddress, FolksCoreConfig } from "../src/index.js";
@@ -30,7 +30,7 @@ async function main() {
     chainType: ChainType.AVM,
   });
 
-  FolksCore.addTokens(CUSTOM_NTT_TOKEN_TESTNET);
+  FolksCore.addTokens(CUSTOM_NTT_TOKENS_TESTNET);
 
   const feePaymentToken = {
     tokenType: TokenType.GAS,
