@@ -49,7 +49,7 @@ export const MAINNET_AVM_FOLKS_CHAIN: Record<MainnetAVMFolksChainId, NTTChain<AV
     network: NetworkType.MAINNET,
     opUp: 1167143153n as AVMContractId,
     wormholeCore: 842125965n as AVMContractId,
-    guardianAddress: "XJC32PG73M4VIWAAZQZX6LRHPDAX2DMGVGQJJZSWJUZ5LECEVFMGJENX2M" as AVMAddress,
+    guardianAddress: "I2FTX4DMZRRSWHXCXTKKZEVK33KOMUZLO3TCQOISM2ZHCGITGZ7ZMARXEI" as AVMAddress,
     transceiverManager: 3298383942n as AVMContractId,
     nttExecutors: {
       [ExecutorFeeType.NATIVE]: 3278916601n as AVMContractId,
