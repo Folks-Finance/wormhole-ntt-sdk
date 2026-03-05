@@ -3,7 +3,7 @@ import { chainToChainId } from "@wormhole-foundation/sdk";
 import { ChainType, NetworkType } from "../../../common/types/chain.js";
 import { ExecutorFeeType } from "../../../common/types/ntt.js";
 
-import type { AVMAddress, AVMContractId } from "../../../common/types/address.js";
+import type { AVMContractId } from "../../../common/types/address.js";
 import type { AVMChainType, NTTChain } from "../../../common/types/chain.js";
 import type { AVMChainName, MainnetAVMFolksChainId, TestnetAVMFolksChainId } from "../types/chain.js";
 import type { ChainId as WormholeChainId } from "@wormhole-foundation/sdk";
@@ -49,7 +49,6 @@ export const MAINNET_AVM_FOLKS_CHAIN: Record<MainnetAVMFolksChainId, NTTChain<AV
     network: NetworkType.MAINNET,
     opUp: 1167143153n as AVMContractId,
     wormholeCore: 842125965n as AVMContractId,
-    guardianAddress: "I2FTX4DMZRRSWHXCXTKKZEVK33KOMUZLO3TCQOISM2ZHCGITGZ7ZMARXEI" as AVMAddress,
     transceiverManager: 3298383942n as AVMContractId,
     nttExecutors: {
       [ExecutorFeeType.NATIVE]: 3278916601n as AVMContractId,
@@ -67,7 +66,6 @@ export const TESTNET_AVM_FOLKS_CHAIN: Record<TestnetAVMFolksChainId, NTTChain<AV
     network: NetworkType.TESTNET,
     opUp: 397104542n as AVMContractId,
     wormholeCore: 86525623n as AVMContractId,
-    guardianAddress: "Z7AISPXE4YFESMU35JXBEM6JZSKTVGPASEUQXLM7XTEKVUHOYTRVQHVYVQ" as AVMAddress,
     transceiverManager: 748800766n as AVMContractId,
     nttExecutors: {
       [ExecutorFeeType.NATIVE]: 748251968n as AVMContractId,

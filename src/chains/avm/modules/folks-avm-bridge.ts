@@ -18,6 +18,7 @@ import {
   getNttManagerWithTokenPaymentExecutorContract,
   getTransceiverManagerContract,
   getVerifierSigsLogicSig,
+  getWormholeGuardianAddress,
   getWormholeTransceiverContract,
 } from "../utils/contract.js";
 import { decodeVaa } from "../utils/ntt.js";
@@ -91,7 +92,7 @@ export const prepare = {
     nttTokenId: NTTTokenId,
     vaaRaw: Hex,
   ): Promise<PrepareManualCompleteTransferAVMCall> {
-    const { opUp, wormholeCore, guardianAddress, transceiverManager } = destinationChain;
+    const { opUp, wormholeCore, transceiverManager } = destinationChain;
 
     const destinationNttChainToken = getNttChainToken<AVMChainType>(nttTokenId, destinationChain.folksChainId);
     const { nttManagerAddress, transceivers } = destinationNttChainToken;
@@ -103,6 +104,7 @@ export const prepare = {
     if (!wormholeTransceiver) throw new Error(`No wormhole transceiver set for chain ${destinationChain.folksChainId}`);
 
     const vaa = decodeVaa(vaaRaw);
+    const guardianAddress = await getWormholeGuardianAddress(provider, wormholeCore);
     const guardianLocalState = await getLocalStateAsBytes(provider, wormholeCore, guardianAddress);
     const guardianSignatures = Uint8Array.from(
       vaa.signatures.flatMap(({ guardianIndex, signature }) => [...bigIntToBytes(guardianIndex, 1), ...signature]),

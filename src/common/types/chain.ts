@@ -1,4 +1,4 @@
-import type { AVMAddress, AVMContractId } from "./address.js";
+import type { AVMContractId } from "./address.js";
 import type { NTTExecutor } from "./ntt.js";
 import type { AVMChainName, AVMFolksChainId, AVMWormholeChainId } from "../../chains/avm/types/chain.js";
 import type { EVMChainName, EVMFolksChainId, EVMWormholeChainId } from "../../chains/evm/types/chain.js";
@@ -75,7 +75,6 @@ export type NTTChainAVM = {
   wormholeChainId: AVMWormholeChainId;
   opUp: AVMContractId;
   wormholeCore: AVMContractId;
-  guardianAddress: AVMAddress;
   transceiverManager: AVMContractId;
   nttExecutors: NTTExecutor<AVMChainType>;
 } & IFolksChain;
