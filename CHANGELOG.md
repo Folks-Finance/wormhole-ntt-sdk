@@ -1,5 +1,11 @@
 # @folks-finance/wormhole-ntt-sdk
 
+## 0.1.2
+
+### Patch Changes
+
+- b68c0f2: dynamically calculate guardian address
+
 ## 0.1.1
 
 ### Patch Changes
