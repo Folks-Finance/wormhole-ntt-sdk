@@ -1,5 +1,11 @@
 # @folks-finance/wormhole-ntt-sdk
 
+## 0.1.3
+
+### Patch Changes
+
+- d7763d0: Exported get wh guardian addr function
+
 ## 0.1.2
 
 ### Patch Changes
