@@ -1,6 +1,7 @@
 // - AVM
 export * from "./chains/avm/constants/chain.js";
 export * from "./chains/avm/types/chain.js";
+export { getWormholeGuardianAddress } from "./chains/avm/utils/contract.js";
 
 // - EVM
 export * from "./chains/evm/constants/chain.js";
