@@ -1,5 +1,11 @@
 # @folks-finance/wormhole-ntt-sdk
 
+## 0.1.4
+
+### Patch Changes
+
+- 427d783: bump dependencies
+
 ## 0.1.3
 
 ### Patch Changes
