@@ -26,7 +26,7 @@ const WETH_NTT_TOKEN_ETHEREUM_MAINNET = {
 const WETH_NTT_TOKEN_AVM_MAINNET = {
   assetId: 3495722210n as AVMAsaId,
   nttTokenAddress: 3495722155n as AVMContractId,
-  decimals: 6,
+  decimals: 8,
   nttManagerAddress: 3495722627n as AVMContractId,
   transceivers: [
     {
