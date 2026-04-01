@@ -1,5 +1,11 @@
 # @folks-finance/wormhole-ntt-sdk
 
+## 0.1.5
+
+### Patch Changes
+
+- a8fd09c: added support for new tokens xalgo, wbtc and weth
+
 ## 0.1.4
 
 ### Patch Changes
