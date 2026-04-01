@@ -12,6 +12,7 @@ export * from "./common/constants/api.js";
 export * from "./common/constants/bytes.js";
 export * from "./common/constants/chain.js";
 export * from "./common/constants/ntt.js";
+export * from "./common/constants/tokens/index.js";
 export * from "./common/constants/token.js";
 export * from "./common/types/address.js";
 export * from "./common/types/api.js";

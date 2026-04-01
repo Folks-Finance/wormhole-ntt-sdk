@@ -1,6 +1,6 @@
-import { FOLKS_TESTNET_NTT_TOKEN_ID } from "../src/common/constants/token.js";
 import {
   ChainType,
+  FOLKS_TESTNET_NTT_TOKEN_ID,
   convertToGenericAddress,
   FolksBridge,
   FolksCore,
