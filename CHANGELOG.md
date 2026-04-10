@@ -1,5 +1,11 @@
 # @folks-finance/wormhole-ntt-sdk
 
+## 0.1.6
+
+### Patch Changes
+
+- a32223a: added support for transferETH call
+
 ## 0.1.5
 
 ### Patch Changes
