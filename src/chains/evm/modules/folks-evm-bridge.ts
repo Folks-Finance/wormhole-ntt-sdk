@@ -43,7 +43,8 @@ export const prepare = {
     const { wormholeChainId: recipientWormholeChainId } = getFolksChain(recipientChainId);
 
     const sourceNttChainToken = getNttChainToken<EVMChainType>(nttTokenId, sourceChain.folksChainId);
-    const { isNativeTokenWrapped, nttTokenAddress, nttManagerAddress } = sourceNttChainToken;
+    const { wrappedNttTokenId, nttTokenAddress, nttManagerAddress } = sourceNttChainToken;
+    const isNativeTokenWrapped = wrappedNttTokenId !== undefined;
 
     if (isNativeTokenWrapped) throw new Error(`Must use wrapped ERC20 for manual transfer`);
 
@@ -136,7 +137,8 @@ export const prepare = {
     const { tokenType } = feePaymentToken;
 
     const sourceNttChainToken = getNttChainToken<EVMChainType>(nttTokenId, sourceChain.folksChainId);
-    const { isNativeTokenWrapped, nttTokenAddress, nttManagerAddress } = sourceNttChainToken;
+    const { wrappedNttTokenId, nttTokenAddress, nttManagerAddress } = sourceNttChainToken;
+    const isNativeTokenWrapped = wrappedNttTokenId !== undefined;
 
     let nttExecutorAddress: EVMAddress | undefined;
     switch (tokenType) {
@@ -213,24 +215,24 @@ export const prepare = {
         );
       }
 
-      // always override the allowance for the ntt transfer amount
-      // (not actually needed if transferring native token)
-      stateOverride.push(
-        ...getNttTokenAllowanceStateOverride([
-          {
-            erc20Address: nttTokenAddress,
-            stateDiff: [
-              {
-                owner: sender,
-                spender: nttExecutorAddress,
-                folksChainId: sourceChain.folksChainId,
-                nttTokenId,
-                amount,
-              },
-            ],
-          },
-        ]),
-      );
+      // if needed, override the allowance for the ntt transfer amount
+      if (!isNativeTokenWrapped)
+        stateOverride.push(
+          ...getNttTokenAllowanceStateOverride([
+            {
+              erc20Address: nttTokenAddress,
+              stateDiff: [
+                {
+                  owner: sender,
+                  spender: nttExecutorAddress,
+                  folksChainId: sourceChain.folksChainId,
+                  nttTokenId,
+                  amount,
+                },
+              ],
+            },
+          ]),
+        );
     }
 
     let msgValue = nttFeePaymentAmount;
@@ -394,7 +396,8 @@ export const write = {
       feeArgs,
     } = prepareCall;
     const { tokenType } = feePaymentToken;
-    const { isNativeTokenWrapped, nttTokenAddress, nttManagerAddress } = sourceNttChainToken;
+    const { wrappedNttTokenId, nttTokenAddress, nttManagerAddress } = sourceNttChainToken;
+    const isNativeTokenWrapped = wrappedNttTokenId !== undefined;
 
     switch (tokenType) {
       case TokenType.GAS: {

@@ -8,7 +8,6 @@ import type { NTTTokenConfig, NTTTokenId } from "../../types/ntt.js";
 export const XALGO_NTT_TOKEN_ID = "XALGO" as NTTTokenId;
 
 const XALGO_NTT_TOKEN_EVM_MAINNET = {
-  isNativeTokenWrapped: false,
   nttTokenAddress: "0x23614eD94c202D487eB317Dac4501094C8b36141" as EVMAddress,
   decimals: 6,
   nttManagerAddress: "0xc28CF5A9DB85Abd47062625D9CB38830553168DD" as EVMAddress,
