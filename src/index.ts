@@ -29,8 +29,10 @@ export {
 export {
   getNttChainToken,
   getNttTokenFromAddress,
+  getWrappedNttTokenId,
   isAddressAnNttToken,
   isNttTokenSupported,
+  isWrappedNttToken,
 } from "./common/utils/token.js";
 export { waitTransaction } from "./common/utils/transaction.js";
 
