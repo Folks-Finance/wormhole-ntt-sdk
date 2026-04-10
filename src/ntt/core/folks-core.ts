@@ -181,7 +181,7 @@ export class FolksCore {
     return avmProvider;
   }
 
-  static addTokens(tokens: Record<NTTTokenId, { [ChainId in FolksChainId]?: NTTTokenConfig<ChainId> }>) {
+  static addTokens(tokens: Record<NTTTokenId, NTTTokenConfig>) {
     const instance = FolksCore.getInstance();
     for (const [nttTokenId, chains] of Object.entries(tokens)) {
       for (const [chainId, token] of Object.entries(chains)) {

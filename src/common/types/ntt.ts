@@ -77,6 +77,7 @@ export type Transceiver<C extends ChainType> = {
 export type ChainToken<C extends ChainType> = {
   [ChainType.EVM]: {
     nttTokenId: NTTTokenId;
+    isNativeTokenWrapped: boolean;
     nttTokenAddress: AddressChainType<EVMChainType, TokenAddressType>;
     decimals: number;
     nttManagerAddress: AddressChainType<EVMChainType, ContractAddressType>;
@@ -119,4 +120,9 @@ export type ReferrerFee = {
   address: GenericAddress;
 };
 
-export type NTTTokenConfig<ChainId extends FolksChainId> = Omit<ChainToken<ChainIdToChainType<ChainId>>, "nttTokenId">;
+export type NTTChainTokenConfig<ChainId extends FolksChainId> = Omit<
+  ChainToken<ChainIdToChainType<ChainId>>,
+  "nttTokenId"
+>;
+
+export type NTTTokenConfig = { [ChainId in FolksChainId]?: NTTChainTokenConfig<ChainId> };

@@ -43,7 +43,9 @@ export const prepare = {
     const { wormholeChainId: recipientWormholeChainId } = getFolksChain(recipientChainId);
 
     const sourceNttChainToken = getNttChainToken<EVMChainType>(nttTokenId, sourceChain.folksChainId);
-    const { nttTokenAddress, nttManagerAddress } = sourceNttChainToken;
+    const { isNativeTokenWrapped, nttTokenAddress, nttManagerAddress } = sourceNttChainToken;
+
+    if (isNativeTokenWrapped) throw new Error(`Must use wrapped ERC20 for manual transfer`);
 
     const nttManager = getNTTManagerContract(provider, nttManagerAddress);
     const [, msgValue] = await nttManager.read.quoteDeliveryPrice([
@@ -134,7 +136,7 @@ export const prepare = {
     const { tokenType } = feePaymentToken;
 
     const sourceNttChainToken = getNttChainToken<EVMChainType>(nttTokenId, sourceChain.folksChainId);
-    const { nttTokenAddress, nttManagerAddress } = sourceNttChainToken;
+    const { isNativeTokenWrapped, nttTokenAddress, nttManagerAddress } = sourceNttChainToken;
 
     let nttExecutorAddress: EVMAddress | undefined;
     switch (tokenType) {
@@ -169,7 +171,11 @@ export const prepare = {
     ]);
 
     const stateOverride: StateOverride = [];
-    if (feePaymentToken.tokenType === TokenType.ERC20 && feePaymentToken.tokenAddress === nttTokenAddress) {
+    if (
+      !isNativeTokenWrapped &&
+      feePaymentToken.tokenType === TokenType.ERC20 &&
+      feePaymentToken.tokenAddress === nttTokenAddress
+    ) {
       // handle special case where fee payment token is the same as ntt token
       // override the allowance for the ntt transfer amount + quote amount at same erc20 address
       stateOverride.push(
@@ -208,6 +214,7 @@ export const prepare = {
       }
 
       // always override the allowance for the ntt transfer amount
+      // (not actually needed if transferring native token)
       stateOverride.push(
         ...getNttTokenAllowanceStateOverride([
           {
@@ -228,6 +235,10 @@ export const prepare = {
 
     let msgValue = nttFeePaymentAmount;
     let gasLimit = 0n;
+
+    // if transferring native token then include transfer amount in msg.value
+    if (isNativeTokenWrapped) msgValue += amount;
+
     let effectiveTransactionOptions = transactionOptions;
     if (sourceChain.folksChainId === FOLKS_CHAIN_ID.POLYGON)
       effectiveTransactionOptions = {
@@ -240,7 +251,11 @@ export const prepare = {
         nttExecutorAddress = nttExecutors.NATIVE;
         const nttExecutor = getNTTManagerWithExecutorContract(provider, nttExecutorAddress);
         msgValue += quote.estimatedCost;
-        gasLimit = await nttExecutor.estimateGas.transfer(
+
+        const transferCall = isNativeTokenWrapped
+          ? nttExecutor.estimateGas.transferETH
+          : nttExecutor.estimateGas.transfer;
+        gasLimit = await transferCall(
           [
             nttManagerAddress,
             amount,
@@ -262,7 +277,11 @@ export const prepare = {
       case TokenType.ERC20: {
         nttExecutorAddress = nttExecutors.TOKEN;
         const nttExecutor = getNTTManagerWithTokenPaymentExecutorContract(provider, nttExecutorAddress);
-        gasLimit = await nttExecutor.estimateGas.transfer(
+
+        const transferCall = isNativeTokenWrapped
+          ? nttExecutor.estimateGas.transferETH
+          : nttExecutor.estimateGas.transfer;
+        gasLimit = await transferCall(
           [
             quote.estimatedCost,
             nttManagerAddress,
@@ -375,14 +394,17 @@ export const write = {
       feeArgs,
     } = prepareCall;
     const { tokenType } = feePaymentToken;
-    const { nttTokenAddress, nttManagerAddress } = sourceNttChainToken;
+    const { isNativeTokenWrapped, nttTokenAddress, nttManagerAddress } = sourceNttChainToken;
 
     switch (tokenType) {
       case TokenType.GAS: {
-        await sendERC20Approve(provider, nttTokenAddress, signer, nttExecutorAddress, totalAmount);
+        if (!isNativeTokenWrapped)
+          await sendERC20Approve(provider, nttTokenAddress, signer, nttExecutorAddress, totalAmount);
 
         const nttExecutor = getNTTManagerWithExecutorContract(provider, nttExecutorAddress, signer);
-        return await nttExecutor.write.transfer(
+
+        const transferCall = isNativeTokenWrapped ? nttExecutor.write.transferETH : nttExecutor.write.transfer;
+        return await transferCall(
           [
             nttManagerAddress,
             totalAmount,
@@ -405,7 +427,7 @@ export const write = {
       }
       case TokenType.ERC20: {
         // one approval if special case where fee payment token is same as ntt token
-        if (nttTokenAddress === feePaymentToken.tokenAddress) {
+        if (!isNativeTokenWrapped && nttTokenAddress === feePaymentToken.tokenAddress) {
           await sendERC20Approve(
             provider,
             nttTokenAddress,
@@ -415,14 +437,14 @@ export const write = {
           );
         } else {
           // two approvals otherwise
-          // approve ntt token
-          await sendERC20Approve(
-            provider,
-            nttTokenAddress,
-            signer,
-            nttExecutorAddress,
-            totalAmount + referrerFeeAmount,
-          );
+          if (!isNativeTokenWrapped)
+            await sendERC20Approve(
+              provider,
+              nttTokenAddress,
+              signer,
+              nttExecutorAddress,
+              totalAmount + referrerFeeAmount,
+            );
           // approve fee payment token
           await sendERC20Approve(
             provider,
@@ -434,7 +456,8 @@ export const write = {
         }
 
         const nttExecutor = getNTTManagerWithTokenPaymentExecutorContract(provider, nttExecutorAddress, signer);
-        return await nttExecutor.write.transfer(
+        const transferCall = isNativeTokenWrapped ? nttExecutor.write.transferETH : nttExecutor.write.transfer;
+        return await transferCall(
           [
             executorFeePaymentAmount,
             nttManagerAddress,

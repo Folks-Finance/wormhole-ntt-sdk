@@ -3,12 +3,12 @@ import { EVM_FOLKS_CHAIN_ID } from "../../../chains/evm/constants/chain.js";
 import { TransceiverType } from "../../types/ntt.js";
 
 import type { AVMAsaId, AVMContractId, EVMAddress } from "../../types/address.js";
-import type { FolksChainId } from "../../types/chain.js";
 import type { NTTTokenConfig, NTTTokenId } from "../../types/ntt.js";
 
 export const XALGO_NTT_TOKEN_ID = "XALGO" as NTTTokenId;
 
 const XALGO_NTT_TOKEN_EVM_MAINNET = {
+  isNativeTokenWrapped: false,
   nttTokenAddress: "0x23614eD94c202D487eB317Dac4501094C8b36141" as EVMAddress,
   decimals: 6,
   nttManagerAddress: "0xc28CF5A9DB85Abd47062625D9CB38830553168DD" as EVMAddress,
@@ -36,7 +36,7 @@ const XALGO_NTT_TOKEN_AVM_MAINNET = {
   ],
 };
 
-export const XALGO_NTT_TOKEN: { [ChainId in FolksChainId]?: NTTTokenConfig<ChainId> } = {
+export const XALGO_NTT_TOKEN: NTTTokenConfig = {
   [EVM_FOLKS_CHAIN_ID.ETHEREUM]: XALGO_NTT_TOKEN_EVM_MAINNET,
   [EVM_FOLKS_CHAIN_ID.AVALANCHE]: XALGO_NTT_TOKEN_EVM_MAINNET,
   [EVM_FOLKS_CHAIN_ID.BASE]: XALGO_NTT_TOKEN_EVM_MAINNET,

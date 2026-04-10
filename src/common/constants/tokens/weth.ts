@@ -3,12 +3,12 @@ import { EVM_FOLKS_CHAIN_ID } from "../../../chains/evm/constants/chain.js";
 import { TransceiverType } from "../../types/ntt.js";
 
 import type { AVMAsaId, AVMContractId, EVMAddress } from "../../types/address.js";
-import type { FolksChainId } from "../../types/chain.js";
 import type { NTTTokenConfig, NTTTokenId } from "../../types/ntt.js";
 
 export const WETH_NTT_TOKEN_ID = "WETH" as NTTTokenId;
 
 const WETH_NTT_TOKEN_ETHEREUM_MAINNET = {
+  isNativeTokenWrapped: false,
   nttTokenAddress: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2" as EVMAddress,
   decimals: 18,
   nttManagerAddress: "0x112154b98AaaBF6F0Bf9b541477dC312A6250F52" as EVMAddress,
@@ -36,7 +36,7 @@ const WETH_NTT_TOKEN_AVM_MAINNET = {
   ],
 };
 
-export const WETH_NTT_TOKEN: { [ChainId in FolksChainId]?: NTTTokenConfig<ChainId> } = {
+export const WETH_NTT_TOKEN: NTTTokenConfig = {
   [EVM_FOLKS_CHAIN_ID.ETHEREUM]: WETH_NTT_TOKEN_ETHEREUM_MAINNET,
   [AVM_FOLKS_CHAIN_ID.ALGORAND]: WETH_NTT_TOKEN_AVM_MAINNET,
 };

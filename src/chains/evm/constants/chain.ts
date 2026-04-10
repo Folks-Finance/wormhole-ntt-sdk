@@ -169,8 +169,8 @@ export const MAINNET_EVM_FOLKS_CHAIN: Record<MainnetEVMFolksChainId, NTTChain<EV
     chainName: "ETHEREUM",
     network: NetworkType.MAINNET,
     nttExecutors: {
-      [ExecutorFeeType.NATIVE]: "0xD2D9c936165a85F27a5a7e07aFb974D022B89463" as EVMAddress,
-      [ExecutorFeeType.TOKEN]: "0x8E4dB410c77300c077385C344BeD5B902c9Df71d" as EVMAddress,
+      [ExecutorFeeType.NATIVE]: "0xF2a1133eD83ace6EC097d12aaaf971582A84FD9e" as EVMAddress,
+      [ExecutorFeeType.TOKEN]: "0x7652088A4A57CdaDDcF6Acf245ea824Feb852515" as EVMAddress,
     },
   },
   [EVM_FOLKS_CHAIN_ID.AVALANCHE]: {
@@ -180,8 +180,8 @@ export const MAINNET_EVM_FOLKS_CHAIN: Record<MainnetEVMFolksChainId, NTTChain<EV
     chainName: "AVALANCHE",
     network: NetworkType.MAINNET,
     nttExecutors: {
-      [ExecutorFeeType.NATIVE]: "0x4e9Af03fbf1aa2b79A2D4babD3e22e09f18Bb8EE" as EVMAddress,
-      [ExecutorFeeType.TOKEN]: "0x501C95e5E7B0661Dd4c2D8625D13112ad337271F" as EVMAddress,
+      [ExecutorFeeType.NATIVE]: "0xaf1Daf89193828FEeE988e5F56cbe8c574EB1e66" as EVMAddress,
+      [ExecutorFeeType.TOKEN]: "0x73758b457564a7505C56d93aBd3fEd23A0623974" as EVMAddress,
     },
   },
   [EVM_FOLKS_CHAIN_ID.BASE]: {
@@ -191,8 +191,8 @@ export const MAINNET_EVM_FOLKS_CHAIN: Record<MainnetEVMFolksChainId, NTTChain<EV
     chainName: "BASE",
     network: NetworkType.MAINNET,
     nttExecutors: {
-      [ExecutorFeeType.NATIVE]: "0x83216747fC21b86173D800E2960c0D5395de0F30" as EVMAddress,
-      [ExecutorFeeType.TOKEN]: "0x4bbe096C7530B218ba001C6d84798F01ea917868" as EVMAddress,
+      [ExecutorFeeType.NATIVE]: "0xc23a812f64D9771D590468e1Af95448173Be1E43" as EVMAddress,
+      [ExecutorFeeType.TOKEN]: "0x8aef0b7Bf7b66335F577d642f5b95Da3321FD42b" as EVMAddress,
     },
   },
   [EVM_FOLKS_CHAIN_ID.ARBITRUM]: {
@@ -202,8 +202,8 @@ export const MAINNET_EVM_FOLKS_CHAIN: Record<MainnetEVMFolksChainId, NTTChain<EV
     chainName: "ARBITRUM",
     network: NetworkType.MAINNET,
     nttExecutors: {
-      [ExecutorFeeType.NATIVE]: "0x0Af42A597b0C201D4dcf450DcD0c06d55ddC1C77" as EVMAddress,
-      [ExecutorFeeType.TOKEN]: "0x6352Ece82D55ccd2159E9B221b2299cAEefF54E9" as EVMAddress,
+      [ExecutorFeeType.NATIVE]: "0x3995892bd8171C141ca7110BE167221511106fcc" as EVMAddress,
+      [ExecutorFeeType.TOKEN]: "0x8205c2A79748614cE601402aB0ccBEa573ea237b" as EVMAddress,
     },
   },
   [EVM_FOLKS_CHAIN_ID.BSC]: {
@@ -213,8 +213,8 @@ export const MAINNET_EVM_FOLKS_CHAIN: Record<MainnetEVMFolksChainId, NTTChain<EV
     chainName: "BSC",
     network: NetworkType.MAINNET,
     nttExecutors: {
-      [ExecutorFeeType.NATIVE]: "0x39B57Dd9908F8be02CfeE283b67eA1303Bc29fe1" as EVMAddress,
-      [ExecutorFeeType.TOKEN]: "0xd5b2957F63eEB809A77ED3EBAd6bf5BAC9A818C8" as EVMAddress,
+      [ExecutorFeeType.NATIVE]: "0xD11CA301D59454ec68Eb62fc8Cbb8093f92C76b7" as EVMAddress,
+      [ExecutorFeeType.TOKEN]: "0x4e637270976bfb52edb699698312b57868367ae7" as EVMAddress,
     },
   },
   [EVM_FOLKS_CHAIN_ID.POLYGON]: {
@@ -224,8 +224,8 @@ export const MAINNET_EVM_FOLKS_CHAIN: Record<MainnetEVMFolksChainId, NTTChain<EV
     chainName: "POLYGON",
     network: NetworkType.MAINNET,
     nttExecutors: {
-      [ExecutorFeeType.NATIVE]: "0x6762157b73941e36cEd0AEf54614DdE545d0F990" as EVMAddress,
-      [ExecutorFeeType.TOKEN]: "0x5288ac81Ec57A3DF7feBBa8c305506c28b0B05B6" as EVMAddress,
+      [ExecutorFeeType.NATIVE]: "0x6351d80EF98b287fd011F7b07Efa9b4086937d8b" as EVMAddress,
+      [ExecutorFeeType.TOKEN]: "0x00f4E536846f6b5C30adb2D83560E6adb37CF667" as EVMAddress,
     },
   },
   [EVM_FOLKS_CHAIN_ID.SEI_EVM]: {
@@ -235,8 +235,8 @@ export const MAINNET_EVM_FOLKS_CHAIN: Record<MainnetEVMFolksChainId, NTTChain<EV
     chainName: "SEI_EVM",
     network: NetworkType.MAINNET,
     nttExecutors: {
-      [ExecutorFeeType.NATIVE]: "0x3F2D6441C7a59Dfe80f8e14142F9E28F6D440445" as EVMAddress,
-      [ExecutorFeeType.TOKEN]: "0x3F2647cc4aff2A8342e1C8306Ad4B7c72a850E91" as EVMAddress,
+      [ExecutorFeeType.NATIVE]: "0x53f2873a4FDEBF0D23Ac350128ED63eF092Cb6FE" as EVMAddress,
+      [ExecutorFeeType.TOKEN]: "0xA00eA5C8Ed582C2c1E5e0da471a6d37fb840a401" as EVMAddress,
     },
   },
   [EVM_FOLKS_CHAIN_ID.MONAD]: {
@@ -246,8 +246,8 @@ export const MAINNET_EVM_FOLKS_CHAIN: Record<MainnetEVMFolksChainId, NTTChain<EV
     chainName: "MONAD",
     network: NetworkType.MAINNET,
     nttExecutors: {
-      [ExecutorFeeType.NATIVE]: "0x93FE94Ad887a1B04DBFf1f736bfcD1698D4cfF66" as EVMAddress,
-      [ExecutorFeeType.TOKEN]: "0x028864F9CE26E76aFb748Ed08F7631d879a774Ad" as EVMAddress,
+      [ExecutorFeeType.NATIVE]: "0x0e310fd9738118c593bb266af02ef11f21d9ca3f" as EVMAddress,
+      [ExecutorFeeType.TOKEN]: "0xfb3416edd66622dba6d58c43d039a6a23379d808" as EVMAddress,
     },
   },
 };
@@ -260,8 +260,8 @@ export const TESTNET_EVM_FOLKS_CHAIN: Record<TestnetEVMFolksChainId, NTTChain<EV
     chainName: "ETHEREUM_SEPOLIA",
     network: NetworkType.TESTNET,
     nttExecutors: {
-      [ExecutorFeeType.NATIVE]: "0x54DD7080aE169DD923fE56d0C4f814a0a17B8f41" as EVMAddress,
-      [ExecutorFeeType.TOKEN]: "0xCBf6FA72a15D97aa3a0C08873ACEaEB7DAb51DCd" as EVMAddress,
+      [ExecutorFeeType.NATIVE]: "0x7297b6dbc43F265241631d6342F94244189ECa3B" as EVMAddress,
+      [ExecutorFeeType.TOKEN]: "0xb51B0AB26fCCC19D31835AC912dd734C9B1c53d9" as EVMAddress,
     },
   },
   [EVM_FOLKS_CHAIN_ID.AVALANCHE_FUJI]: {
@@ -271,8 +271,8 @@ export const TESTNET_EVM_FOLKS_CHAIN: Record<TestnetEVMFolksChainId, NTTChain<EV
     chainName: "AVALANCHE_FUJI",
     network: NetworkType.TESTNET,
     nttExecutors: {
-      [ExecutorFeeType.NATIVE]: "0x4e9Af03fbf1aa2b79A2D4babD3e22e09f18Bb8EE" as EVMAddress,
-      [ExecutorFeeType.TOKEN]: "0x281d15aB59Eb82472Ba3b4819FCC57067d40b119" as EVMAddress,
+      [ExecutorFeeType.NATIVE]: "0x5C4FF2D5E4fBec700313D26f453Af85C9bCA65B5" as EVMAddress,
+      [ExecutorFeeType.TOKEN]: "0x8B51c3F4c8BDBEcac9b724c0762Efee6E556c0fF" as EVMAddress,
     },
   },
   [EVM_FOLKS_CHAIN_ID.BASE_SEPOLIA]: {
@@ -282,8 +282,8 @@ export const TESTNET_EVM_FOLKS_CHAIN: Record<TestnetEVMFolksChainId, NTTChain<EV
     chainName: "BASE_SEPOLIA",
     network: NetworkType.TESTNET,
     nttExecutors: {
-      [ExecutorFeeType.NATIVE]: "0x5845E08d890E21687F7Ebf7CbAbD360cD91c6245" as EVMAddress,
-      [ExecutorFeeType.TOKEN]: "0x23377e4A8824821c062A94D67aFad1370D0B8Ef9" as EVMAddress,
+      [ExecutorFeeType.NATIVE]: "0xE51966C47Ff2403C58E2bC2155892ed2b5023757" as EVMAddress,
+      [ExecutorFeeType.TOKEN]: "0x5191a77Cc7CC60C38A1b405A53a212d0B9E0FC81" as EVMAddress,
     },
   },
   [EVM_FOLKS_CHAIN_ID.ARBITRUM_SEPOLIA]: {
@@ -293,8 +293,8 @@ export const TESTNET_EVM_FOLKS_CHAIN: Record<TestnetEVMFolksChainId, NTTChain<EV
     chainName: "ARBITRUM_SEPOLIA",
     network: NetworkType.TESTNET,
     nttExecutors: {
-      [ExecutorFeeType.NATIVE]: "0xd048170F1ECB8D47E499D3459aC379DA023E2C1B" as EVMAddress,
-      [ExecutorFeeType.TOKEN]: "0x7D80435D3CfDFeBcDDAccf465B5c4c3D2581a6DE" as EVMAddress,
+      [ExecutorFeeType.NATIVE]: "0x1E8F9D289FdE82185824948Ca19965cD489e1616" as EVMAddress,
+      [ExecutorFeeType.TOKEN]: "0xdFE620E233a37Ab3bb63A4f4DBdfc5c7B308DD9e" as EVMAddress,
     },
   },
   [EVM_FOLKS_CHAIN_ID.BSC_TESTNET]: {
@@ -304,8 +304,8 @@ export const TESTNET_EVM_FOLKS_CHAIN: Record<TestnetEVMFolksChainId, NTTChain<EV
     chainName: "BSC_TESTNET",
     network: NetworkType.TESTNET,
     nttExecutors: {
-      [ExecutorFeeType.NATIVE]: "0x39B57Dd9908F8be02CfeE283b67eA1303Bc29fe1" as EVMAddress,
-      [ExecutorFeeType.TOKEN]: "0x7eF21BaBB8e0b30B89e3159955c7136549B2813B" as EVMAddress,
+      [ExecutorFeeType.NATIVE]: "0xfe46d849b58778cd309cb92b78dd6de03aceac50" as EVMAddress,
+      [ExecutorFeeType.TOKEN]: "0x84C5161A75643376F75FFB1196a54291b997cA2f" as EVMAddress,
     },
   },
   [EVM_FOLKS_CHAIN_ID.POLYGON_AMOY]: {
@@ -315,8 +315,8 @@ export const TESTNET_EVM_FOLKS_CHAIN: Record<TestnetEVMFolksChainId, NTTChain<EV
     chainName: "POLYGON_AMOY",
     network: NetworkType.TESTNET,
     nttExecutors: {
-      [ExecutorFeeType.NATIVE]: "0x2982B9566E912458fE711FB1Fd78158264596937" as EVMAddress,
-      [ExecutorFeeType.TOKEN]: "0x1EB24152d84Ddb4C4BB34915488b13223f0fE88A" as EVMAddress,
+      [ExecutorFeeType.NATIVE]: "0x774BC7C4e327F497fa625388d917809896BfcC82" as EVMAddress,
+      [ExecutorFeeType.TOKEN]: "0x4256138F227726F80692fAa4F01D184FC0fd97D4" as EVMAddress,
     },
   },
   [EVM_FOLKS_CHAIN_ID.SEI_EVM_TESTNET]: {
@@ -326,8 +326,8 @@ export const TESTNET_EVM_FOLKS_CHAIN: Record<TestnetEVMFolksChainId, NTTChain<EV
     chainName: "SEI_EVM_TESTNET",
     network: NetworkType.TESTNET,
     nttExecutors: {
-      [ExecutorFeeType.NATIVE]: "0x3F2D6441C7a59Dfe80f8e14142F9E28F6D440445" as EVMAddress,
-      [ExecutorFeeType.TOKEN]: "0x248ae411586401BECC3Be792bd893fF5AEA3c8E5" as EVMAddress,
+      [ExecutorFeeType.NATIVE]: "0x9535644ebbBd31DbEE91cD1B7bbE4A3b5a896A49" as EVMAddress,
+      [ExecutorFeeType.TOKEN]: "0x88742B4F42c3B4E85d605443DAC9227c70D8cf7b" as EVMAddress,
     },
   },
 };

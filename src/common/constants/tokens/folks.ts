@@ -3,7 +3,6 @@ import { EVM_FOLKS_CHAIN_ID } from "../../../chains/evm/constants/chain.js";
 import { TransceiverType } from "../../types/ntt.js";
 
 import type { AVMAsaId, AVMContractId, EVMAddress } from "../../types/address.js";
-import type { FolksChainId } from "../../types/chain.js";
 import type { NTTTokenConfig, NTTTokenId } from "../../types/ntt.js";
 
 export const FOLKS_NTT_TOKEN_ID = "FOLKS" as NTTTokenId;
@@ -23,6 +22,7 @@ const FOLKS_NTT_TOKEN_AVM_TESTNET = {
 };
 
 const FOLKS_NTT_TOKEN_EVM_TESTNET = {
+  isNativeTokenWrapped: false,
   nttTokenAddress: "0x090972399c8DFfFa24690b7a21B6C48630d8703d" as EVMAddress,
   decimals: 6,
   nttManagerAddress: "0x6a4e5Ad2b3FdD76A81575106809cC31ad63f7D04" as EVMAddress,
@@ -37,6 +37,7 @@ const FOLKS_NTT_TOKEN_EVM_TESTNET = {
   },
 };
 const FOLKS_NTT_TOKEN_EVM_MAINNET = {
+  isNativeTokenWrapped: false,
   nttTokenAddress: "0xFF7F8F301F7A706E3CfD3D2275f5dc0b9EE8009B" as EVMAddress,
   decimals: 6,
   nttManagerAddress: "0xd15274c3910600a8246C86a198DE18618Cd47401" as EVMAddress,
@@ -64,7 +65,7 @@ const FOLKS_NTT_TOKEN_AVM_MAINNET = {
   ],
 };
 
-export const FOLKS_NTT_TOKEN: { [ChainId in FolksChainId]?: NTTTokenConfig<ChainId> } = {
+export const FOLKS_NTT_TOKEN: NTTTokenConfig = {
   [EVM_FOLKS_CHAIN_ID.ETHEREUM]: FOLKS_NTT_TOKEN_EVM_MAINNET,
   [EVM_FOLKS_CHAIN_ID.AVALANCHE]: FOLKS_NTT_TOKEN_EVM_MAINNET,
   [EVM_FOLKS_CHAIN_ID.BASE]: FOLKS_NTT_TOKEN_EVM_MAINNET,
@@ -75,7 +76,7 @@ export const FOLKS_NTT_TOKEN: { [ChainId in FolksChainId]?: NTTTokenConfig<Chain
   [EVM_FOLKS_CHAIN_ID.MONAD]: FOLKS_NTT_TOKEN_EVM_MAINNET,
   [AVM_FOLKS_CHAIN_ID.ALGORAND]: FOLKS_NTT_TOKEN_AVM_MAINNET,
 };
-export const FOLKS_NTT_TOKEN_TESTNET: { [ChainId in FolksChainId]?: NTTTokenConfig<ChainId> } = {
+export const FOLKS_NTT_TOKEN_TESTNET: NTTTokenConfig = {
   [EVM_FOLKS_CHAIN_ID.ETHEREUM_SEPOLIA]: FOLKS_NTT_TOKEN_EVM_TESTNET,
   [EVM_FOLKS_CHAIN_ID.AVALANCHE_FUJI]: FOLKS_NTT_TOKEN_EVM_TESTNET,
   [EVM_FOLKS_CHAIN_ID.BASE_SEPOLIA]: FOLKS_NTT_TOKEN_EVM_TESTNET,
