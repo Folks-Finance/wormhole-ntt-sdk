@@ -29,6 +29,50 @@ export function getNttChainToken<T extends ChainType>(
   return FolksCore.getToken<T>(folksChainId, nttTokenId);
 }
 
+export function isWrappedNttToken<T extends ChainType>(
+  nttTokenId: NTTTokenId,
+  folksChainId: FolksChainIdType<T>,
+): boolean {
+  const { chainType } = getFolksChain(folksChainId);
+
+  switch (chainType) {
+    case ChainType.EVM: {
+      const token = FolksCore.getToken(folksChainId, nttTokenId) as ChainToken<EVMChainType>;
+      return token.wrappedNttTokenId !== undefined;
+    }
+    case ChainType.AVM: {
+      return false;
+    }
+    default:
+      return exhaustiveCheck(chainType);
+  }
+}
+
+export function getWrappedNttTokenId<T extends ChainType>(
+  nttTokenId: NTTTokenId,
+  folksChainId: FolksChainIdType<T>,
+): NTTTokenId {
+  const { chainType } = getFolksChain(folksChainId);
+
+  let wrappedNttTokenId: NTTTokenId | undefined;
+  switch (chainType) {
+    case ChainType.EVM: {
+      const token = FolksCore.getToken(folksChainId, nttTokenId) as ChainToken<EVMChainType>;
+      wrappedNttTokenId = token.wrappedNttTokenId;
+      break;
+    }
+    case ChainType.AVM: {
+      break;
+    }
+    default:
+      return exhaustiveCheck(chainType);
+  }
+
+  if (!wrappedNttTokenId)
+    throw new Error(`Wrapped NTT Token Id not found for ${nttTokenId} on folks chain ${folksChainId}`);
+  return wrappedNttTokenId;
+}
+
 export function isAddressAnNttToken(folksChainId: FolksChainId, address: GenericAddress): boolean {
   const { chainType } = getFolksChain(folksChainId);
   const nttTokens = FolksCore.getTokens(folksChainId);

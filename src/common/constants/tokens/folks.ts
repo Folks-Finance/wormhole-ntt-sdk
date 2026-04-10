@@ -22,7 +22,6 @@ const FOLKS_NTT_TOKEN_AVM_TESTNET = {
 };
 
 const FOLKS_NTT_TOKEN_EVM_TESTNET = {
-  isNativeTokenWrapped: false,
   nttTokenAddress: "0x090972399c8DFfFa24690b7a21B6C48630d8703d" as EVMAddress,
   decimals: 6,
   nttManagerAddress: "0x6a4e5Ad2b3FdD76A81575106809cC31ad63f7D04" as EVMAddress,
@@ -37,7 +36,6 @@ const FOLKS_NTT_TOKEN_EVM_TESTNET = {
   },
 };
 const FOLKS_NTT_TOKEN_EVM_MAINNET = {
-  isNativeTokenWrapped: false,
   nttTokenAddress: "0xFF7F8F301F7A706E3CfD3D2275f5dc0b9EE8009B" as EVMAddress,
   decimals: 6,
   nttManagerAddress: "0xd15274c3910600a8246C86a198DE18618Cd47401" as EVMAddress,

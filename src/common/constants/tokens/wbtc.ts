@@ -8,7 +8,6 @@ import type { NTTTokenConfig, NTTTokenId } from "../../types/ntt.js";
 export const WBTC_NTT_TOKEN_ID = "WBTC" as NTTTokenId;
 
 const WBTC_NTT_TOKEN_ETHEREUM_MAINNET = {
-  isNativeTokenWrapped: false,
   nttTokenAddress: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599" as EVMAddress,
   decimals: 8,
   nttManagerAddress: "0x10DC78D083BcfDD4dc33E578a4aC16c9F52BCcA3" as EVMAddress,

@@ -8,7 +8,6 @@ import type { NTTTokenConfig, NTTTokenId } from "../../types/ntt.js";
 export const WETH_NTT_TOKEN_ID = "WETH" as NTTTokenId;
 
 const WETH_NTT_TOKEN_ETHEREUM_MAINNET = {
-  isNativeTokenWrapped: false,
   nttTokenAddress: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2" as EVMAddress,
   decimals: 18,
   nttManagerAddress: "0x112154b98AaaBF6F0Bf9b541477dC312A6250F52" as EVMAddress,

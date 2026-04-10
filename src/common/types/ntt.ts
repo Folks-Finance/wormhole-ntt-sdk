@@ -77,7 +77,7 @@ export type Transceiver<C extends ChainType> = {
 export type ChainToken<C extends ChainType> = {
   [ChainType.EVM]: {
     nttTokenId: NTTTokenId;
-    isNativeTokenWrapped: boolean;
+    wrappedNttTokenId?: NTTTokenId;
     nttTokenAddress: AddressChainType<EVMChainType, TokenAddressType>;
     decimals: number;
     nttManagerAddress: AddressChainType<EVMChainType, ContractAddressType>;
