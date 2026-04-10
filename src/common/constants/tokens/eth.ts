@@ -10,7 +10,7 @@ export const ETH_NTT_TOKEN_ID = "ETH" as NTTTokenId;
 
 const ETH_NTT_TOKEN_ETHEREUM_MAINNET = {
   wrappedNttTokenId: WETH_NTT_TOKEN_ID,
-  nttTokenAddress: "0x" as EVMAddress,
+  nttTokenAddress: "0x0000000000000000000000000000000000000000" as EVMAddress,
   decimals: 18,
   nttManagerAddress: "0x112154b98AaaBF6F0Bf9b541477dC312A6250F52" as EVMAddress,
   transceivers: [
