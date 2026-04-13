@@ -1,5 +1,11 @@
 # @folks-finance/wormhole-ntt-sdk
 
+## 0.1.7
+
+### Patch Changes
+
+- e3e5de0: added link between native ntt token and it's wrapped version
+
 ## 0.1.6
 
 ### Patch Changes
