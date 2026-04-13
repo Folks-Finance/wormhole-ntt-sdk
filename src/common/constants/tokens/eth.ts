@@ -1,14 +1,16 @@
 import { EVM_FOLKS_CHAIN_ID } from "../../../chains/evm/constants/chain.js";
 import { TransceiverType } from "../../types/ntt.js";
 
+import { WETH_NTT_TOKEN_ID } from "./weth.js";
+
 import type { EVMAddress } from "../../types/address.js";
 import type { NTTTokenConfig, NTTTokenId } from "../../types/ntt.js";
 
 export const ETH_NTT_TOKEN_ID = "ETH" as NTTTokenId;
 
 const ETH_NTT_TOKEN_ETHEREUM_MAINNET = {
-  isNativeTokenWrapped: true,
-  nttTokenAddress: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2" as EVMAddress,
+  wrappedNttTokenId: WETH_NTT_TOKEN_ID,
+  nttTokenAddress: "0x0000000000000000000000000000000000000000" as EVMAddress,
   decimals: 18,
   nttManagerAddress: "0x112154b98AaaBF6F0Bf9b541477dC312A6250F52" as EVMAddress,
   transceivers: [

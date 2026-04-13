@@ -5,7 +5,6 @@ import type { EVMAddress, NTTTokenId, AVMAsaId, AVMContractId } from "../src/ind
 export const CUSTOM_NTT_TOKEN_TESTNET_ID = "MYTOKEN" as NTTTokenId;
 
 export const CUSTOM_NTT_TOKEN_TESTNET_EVM = {
-  isNativeTokenWrapped: false,
   nttTokenAddress: "0x090972399c8DFfFa24690b7a21B6C48630d8703d" as EVMAddress,
   decimals: 6,
   nttManagerAddress: "0x6a4e5Ad2b3FdD76A81575106809cC31ad63f7D04" as EVMAddress,
