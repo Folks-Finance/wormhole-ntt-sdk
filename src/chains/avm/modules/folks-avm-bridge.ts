@@ -22,7 +22,7 @@ import {
   getWormholeTransceiverContract,
 } from "../utils/contract.js";
 import { decodeVaa } from "../utils/ntt.js";
-import { getLocalStateAsBytes } from "../utils/state.js";
+import { getLocalStateAsBytes, isAccountOptedIntoAsset } from "../utils/state.js";
 
 import type { AVMAddress, AVMContractId, GenericAddress } from "../../../common/types/address.js";
 import type { Quote } from "../../../common/types/api.js";
@@ -88,14 +88,15 @@ export const prepare = {
 
   async manualCompleteTransfer(
     provider: AlgorandClient,
+    sender: AVMAddress,
     destinationChain: NTTChainAVM,
     nttTokenId: NTTTokenId,
     vaaRaw: Hex,
   ): Promise<PrepareManualCompleteTransferAVMCall> {
     const { opUp, wormholeCore, transceiverManager } = destinationChain;
 
-    const destinationNttChainToken = getNttChainToken<AVMChainType>(nttTokenId, destinationChain.folksChainId);
-    const { nttManagerAddress, transceivers } = destinationNttChainToken;
+    const destNttChainToken = getNttChainToken<AVMChainType>(nttTokenId, destinationChain.folksChainId);
+    const { assetId, nttManagerAddress, transceivers } = destNttChainToken;
 
     const wormholeTransceiver = transceivers.find(
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
@@ -119,10 +120,13 @@ export const prepare = {
     );
 
     const numOpUpTxns = 0;
+    const optInRequired = !(await isAccountOptedIntoAsset(provider, assetId, sender));
 
     return {
       numOpUpTxns,
       opUpContract: opUp,
+      destNttChainToken,
+      optInRequired,
       wormholeCoreContract: wormholeCore,
       guardianAddress,
       wormholeTransceiverContract: wormholeTransceiver.address,
@@ -284,6 +288,8 @@ export const write = {
     const {
       numOpUpTxns,
       opUpContract,
+      destNttChainToken,
+      optInRequired,
       wormholeCoreContract,
       guardianAddress,
       wormholeTransceiverContract,
@@ -295,6 +301,7 @@ export const write = {
       vaaDigest,
       message,
     } = prepareCall;
+    const { assetId } = destNttChainToken;
 
     const verifierSigsLogicSig = getVerifierSigsLogicSig(provider);
     const wormholeTransceiverClient = getWormholeTransceiverContract(provider, wormholeTransceiverContract, signer);
@@ -308,6 +315,15 @@ export const write = {
       const opUpTxn = await createOpUpTxn(provider, opUpContract, senderAddress, numOpUpTxns);
       group.addTransaction(opUpTxn, signer.transactionSigner);
       txIdx += 1;
+    }
+
+    // add optin if required
+    if (optInRequired) {
+      const optInTxn = await provider.createTransaction.assetOptIn({
+        sender: senderAddress,
+        assetId,
+      });
+      group.addTransaction(optInTxn, signer.transactionSigner);
     }
 
     // receive message

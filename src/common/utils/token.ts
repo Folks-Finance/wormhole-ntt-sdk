@@ -7,6 +7,7 @@ import { ChainType } from "../types/chain.js";
 import { convertFromGenericAddress } from "./address.js";
 import { getFolksChain } from "./chain.js";
 import { exhaustiveCheck } from "./exhaustive-check.js";
+import { doesTransferHaveDust } from "./formulae.js";
 
 import type { GenericAddress } from "../types/address.js";
 import type { FolksChainId, AVMChainType, EVMChainType, FolksChainIdType } from "../types/chain.js";
@@ -120,4 +121,22 @@ export function getNttTokenFromAddress<T extends ChainType>(
 
   if (!chainToken) throw new Error(`NTT Token not found for ${address} on folks chain ${folksChainId}`);
   return chainToken;
+}
+
+export function assertTransferHasZeroDust(
+  nttTokenId: NTTTokenId,
+  sourceFolksChainId: FolksChainId,
+  destFolksChainId: FolksChainId,
+  amount: bigint,
+) {
+  const { decimals: sourceDecimals } = getNttChainToken(nttTokenId, sourceFolksChainId);
+  const destNttTokenId = isWrappedNttToken(nttTokenId, sourceFolksChainId)
+    ? getWrappedNttTokenId(nttTokenId, sourceFolksChainId)
+    : nttTokenId;
+  const { decimals: destDecimals } = getNttChainToken(destNttTokenId, destFolksChainId);
+
+  if (doesTransferHaveDust(amount, sourceDecimals, destDecimals))
+    throw new Error(
+      `Amount ${amount} has dust when transferring from chain with ${sourceDecimals} decimals to chain with ${destDecimals} decimals`,
+    );
 }

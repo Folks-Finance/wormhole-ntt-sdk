@@ -1,9 +1,24 @@
+import type { AVMAddress, AVMAsaId, AVMContractId } from "../../../common/types/address.js";
 import type { AlgorandClient } from "@algorandfoundation/algokit-utils";
+
+export async function isAccountOptedIntoAsset(
+  provider: AlgorandClient,
+  assetId: AVMAsaId,
+  address: AVMAddress,
+): Promise<boolean> {
+  try {
+    await provider.asset.getAccountInformation(address, assetId);
+    return true;
+    // eslint-disable-next-line
+  } catch (e) {
+    return false;
+  }
+}
 
 export async function getLocalStateAsBytes(
   provider: AlgorandClient,
-  appId: bigint,
-  address: string,
+  appId: AVMContractId,
+  address: AVMAddress,
 ): Promise<Uint8Array> {
   const ai = await provider.client.algod.accountApplicationInformation(address, appId).do();
   if (!ai.appLocalState) throw new Error("cannot find local state");

@@ -18,6 +18,8 @@ export type PrepareManualInitiateTransferAVMCall = {
 } & PrepareAVMCall;
 
 export type PrepareManualCompleteTransferAVMCall = {
+  destNttChainToken: ChainToken<AVMChainType>;
+  optInRequired: boolean;
   wormholeCoreContract: AVMContractId;
   guardianAddress: AVMAddress;
   wormholeTransceiverContract: AVMContractId;
