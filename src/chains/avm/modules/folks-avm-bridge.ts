@@ -324,6 +324,7 @@ export const write = {
         assetId,
       });
       group.addTransaction(optInTxn, signer.transactionSigner);
+      txIdx += 1;
     }
 
     // receive message
