@@ -1,5 +1,11 @@
 # @folks-finance/wormhole-ntt-sdk
 
+## 0.1.8
+
+### Patch Changes
+
+- ab22491: added algorand asset opt in if required and dust check
+
 ## 0.1.7
 
 ### Patch Changes
