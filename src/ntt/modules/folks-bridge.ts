@@ -31,6 +31,7 @@ import { exhaustiveCheck } from "../../common/utils/exhaustive-check.js";
 import { createDecimalAmount } from "../../common/utils/formulae.js";
 import { isDefined } from "../../common/utils/is-defined.js";
 import {
+  assertTransferHasZeroDust,
   getNttChainToken,
   getNttTokenFromAddress,
   isAddressAnNttToken,
@@ -283,6 +284,8 @@ export const prepare = {
 
     const senderAddress = getSignerGenericAddress(FolksCore.getFolksSigner());
 
+    assertTransferHasZeroDust(nttTokenId, folksChain.folksChainId, recipientChainId, amount);
+
     switch (chainType) {
       case ChainType.EVM:
         return (await FolksEVMBridge.prepare.manualInitiateTransfer(
@@ -330,6 +333,7 @@ export const prepare = {
       case ChainType.AVM:
         return (await FolksAVMBridge.prepare.manualCompleteTransfer(
           FolksCore.getProvider<AVMChainType>(folksChain.folksChainId),
+          convertFromGenericAddress(senderAddress, chainType),
           folksChain,
           nttTokenId,
           vaaRaw,
@@ -355,6 +359,8 @@ export const prepare = {
     const { folksChainId: destFolksChainId } = destinationChain;
 
     const senderAddress = getSignerGenericAddress(FolksCore.getFolksSigner());
+
+    assertTransferHasZeroDust(nttTokenId, sourceFolksChainId, recipientChainId, amount);
 
     const feePaymentTokenAddress = getFeePaymentTokenGenericAddress(feePaymentToken);
     if (feePaymentTokenAddress !== quote.signedQuote.decoded.tokenAddress) {
