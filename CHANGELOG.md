@@ -1,5 +1,11 @@
 # @folks-finance/wormhole-ntt-sdk
 
+## 0.1.9
+
+### Patch Changes
+
+- 1ec5b42: use pushint and pushbytes opcodes in tmpl sig
+
 ## 0.1.8
 
 ### Patch Changes
