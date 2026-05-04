@@ -1,7 +1,7 @@
 export const TMPL_SIG_TEAL = `#pragma version 6
-int TMPL_ADDR_IDX
+pushint TMPL_ADDR_IDX
 pop
-byte TMPL_EMITTER_ID
+pushbytes TMPL_EMITTER_ID
 pop
 txn TypeEnum
 int appl
@@ -12,11 +12,11 @@ int OptIn
 ==
 assert
 txn ApplicationID
-int TMPL_APP_ID
+pushint TMPL_APP_ID
 ==
 assert
 txn RekeyTo
-byte TMPL_APP_ADDRESS
+pushbytes TMPL_APP_ADDRESS
 ==
 assert
 txn Fee
