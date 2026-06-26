@@ -105,7 +105,7 @@ export const prepare = {
     if (!wormholeTransceiver) throw new Error(`No wormhole transceiver set for chain ${destinationChain.folksChainId}`);
 
     const vaa = decodeVaa(vaaRaw);
-    const guardianAddress = await getWormholeGuardianAddress(provider, wormholeCore);
+    const guardianAddress = await getWormholeGuardianAddress(provider, wormholeCore, vaa.guardianSetIndex);
     const guardianLocalState = await getLocalStateAsBytes(provider, wormholeCore, guardianAddress);
     const guardianSignatures = Uint8Array.from(
       vaa.signatures.flatMap(({ guardianIndex, signature }) => [...bigIntToBytes(guardianIndex, 1), ...signature]),

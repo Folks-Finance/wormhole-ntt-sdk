@@ -26,12 +26,10 @@ export function getVerifierSigsLogicSig(provider: AlgorandClient) {
 export async function getWormholeGuardianAddress(
   provider: AlgorandClient,
   wormholeCoreAppId: number | bigint,
+  guardianSetIndex: bigint,
 ): Promise<AVMAddress> {
-  const globalState = await provider.app.getGlobalState(BigInt(wormholeCoreAppId));
-  const currentGuardianSetIndex = BigInt(globalState.currentGuardianSetIndex?.value ?? 0);
-
   const { compiledBase64ToBytes: compiledEmitterLogicSig } = await provider.app.compileTealTemplate(TMPL_SIG_TEAL, {
-    ADDR_IDX: currentGuardianSetIndex,
+    ADDR_IDX: guardianSetIndex,
     EMITTER_ID: "guardian",
     APP_ID: wormholeCoreAppId,
     APP_ADDRESS: getApplicationAddress(wormholeCoreAppId).publicKey,
