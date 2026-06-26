@@ -1,5 +1,11 @@
 # @folks-finance/wormhole-ntt-sdk
 
+## 0.1.10
+
+### Patch Changes
+
+- 2462d4d: do not assume vaa guardian set is latest algorand version
+
 ## 0.1.9
 
 ### Patch Changes
